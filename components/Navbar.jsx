@@ -16,20 +16,18 @@ const Navbar = () => {
   const pathname = usePathname();
 
   return (
-    <nav className="bg-blue-700 border-b border-blue-500">
+    <nav className="bg-slate-900 border-b border-slate-800">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-20 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center md:hidden">
-            {/* <!-- Mobile menu button--> */}
+            {/* Mobile menu button */}
             <button
               type="button"
               id="mobile-dropdown-button"
-              className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+              className="relative inline-flex items-center justify-center rounded-md p-2 text-slate-400 hover:bg-slate-800 hover:text-slate-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-emerald-500"
               aria-controls="mobile-menu"
               aria-expanded="false"
-              onClick={() =>
-                setIsMobileMenuOpen((isMobileMenuOpen) => !isMobileMenuOpen)
-              }
+              onClick={() => setIsMobileMenuOpen((prev) => !prev)}
             >
               <span className="absolute -inset-0.5"></span>
               <span className="sr-only">Open main menu</span>
@@ -51,41 +49,47 @@ const Navbar = () => {
           </div>
 
           <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-start">
-            {/* <!-- Logo --> */}
+            {/* Logo */}
             <Link className="flex flex-shrink-0 items-center" href="/">
               <Image
                 className="h-10 w-auto"
                 src={logoWhite}
                 alt="PropertyPulse"
               />
-              <span className="hidden md:block text-white text-2xl font-bold ml-2">
+              <span className="hidden md:block text-slate-100 text-2xl font-bold ml-2">
                 PropertyPulse
               </span>
             </Link>
-            {/* <!-- Desktop Menu Hidden below md screens --> */}
+            {/* Desktop Menu */}
             <div className="hidden md:ml-6 md:block">
               <div className="flex space-x-2">
                 <Link
                   href="/"
                   className={`${
-                    pathname === "/" ? "bg-black" : ""
-                  } text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2`}
+                    pathname === "/"
+                      ? "bg-emerald-500 text-white"
+                      : "text-slate-300 hover:bg-slate-800 hover:text-slate-100"
+                  } rounded-md px-3 py-2 text-sm font-medium transition-colors duration-150`}
                 >
                   Home
                 </Link>
                 <Link
                   href="/properties"
                   className={`${
-                    pathname === "/properties" ? "bg-black" : ""
-                  } text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2`}
+                    pathname === "/properties"
+                      ? "bg-emerald-500 text-white"
+                      : "text-slate-300 hover:bg-slate-800 hover:text-slate-100"
+                  } rounded-md px-3 py-2 text-sm font-medium transition-colors duration-150`}
                 >
                   Properties
                 </Link>
                 <Link
                   href="/properties/add"
                   className={`${
-                    pathname === "/properties/add" ? "bg-black" : ""
-                  } text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2`}
+                    pathname === "/properties/add"
+                      ? "bg-emerald-500 text-white"
+                      : "text-slate-300 hover:bg-slate-800 hover:text-slate-100"
+                  } rounded-md px-3 py-2 text-sm font-medium transition-colors duration-150`}
                 >
                   Add Property
                 </Link>
@@ -93,25 +97,25 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* <!-- Right Side Menu (Logged Out) --> */}
+          {/* Right Side Menu (Logged Out) */}
           {!isLogggedIn && (
             <div className="hidden md:block md:ml-6">
               <div className="flex items-center">
-                <button className="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2">
-                  <FaGoogle className="mr-2 text-white" />
+                <button className="flex items-center text-slate-900 bg-emerald-400 hover:bg-emerald-500 rounded-md px-4 py-2 text-sm font-medium transition-colors duration-150">
+                  <FaGoogle className="mr-2" />
                   <span>Login or Register</span>
                 </button>
               </div>
             </div>
           )}
 
-          {/* <!-- Right Side Menu (Logged In) --> */}
+          {/* Right Side Menu (Logged In) */}
           {isLogggedIn && (
             <div className="absolute inset-y-0 right-0 flex items-center pr-2 md:static md:inset-auto md:ml-6 md:pr-0">
               <Link href="/messages" className="relative group">
                 <button
                   type="button"
-                  className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                  className="relative rounded-full bg-slate-800 p-2 text-slate-400 hover:text-slate-100 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 focus:ring-offset-slate-900 transition-colors duration-150"
                 >
                   <span className="absolute -inset-1.5"></span>
                   <span className="sr-only">View notifications</span>
@@ -132,23 +136,19 @@ const Navbar = () => {
                 </button>
                 <span className="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full">
                   2
-                  {/* <!-- Replace with the actual number of notifications --> */}
                 </span>
               </Link>
-              {/* <!-- Profile dropdown button --> */}
+
+              {/* Profile dropdown button */}
               <div className="relative ml-3">
                 <div>
                   <button
                     type="button"
-                    className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                    className="relative flex rounded-full bg-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 focus:ring-offset-slate-900"
                     id="user-menu-button"
                     aria-expanded="false"
                     aria-haspopup="true"
-                    onClick={() =>
-                      setIsProfileMenuOpen(
-                        (isProfileMenuOpen) => !isProfileMenuOpen
-                      )
-                    }
+                    onClick={() => setIsProfileMenuOpen((prev) => !prev)}
                   >
                     <span className="absolute -inset-1.5"></span>
                     <span className="sr-only">Open user menu</span>
@@ -160,11 +160,11 @@ const Navbar = () => {
                   </button>
                 </div>
 
-                {/* <!-- Profile dropdown --> */}
+                {/* Profile dropdown */}
                 {isProfileMenuOpen && (
                   <div
                     id="user-menu"
-                    className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                    className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-slate-800 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                     role="menu"
                     aria-orientation="vertical"
                     aria-labelledby="user-menu-button"
@@ -172,7 +172,7 @@ const Navbar = () => {
                   >
                     <Link
                       href="/profile"
-                      className="block px-4 py-2 text-sm text-gray-700"
+                      className="block px-4 py-2 text-sm text-slate-300 hover:bg-slate-700 hover:text-slate-100"
                       role="menuitem"
                       tabIndex="-1"
                       id="user-menu-item-0"
@@ -181,7 +181,7 @@ const Navbar = () => {
                     </Link>
                     <Link
                       href="/properties/saved"
-                      className="block px-4 py-2 text-sm text-gray-700"
+                      className="block px-4 py-2 text-sm text-slate-300 hover:bg-slate-700 hover:text-slate-100"
                       role="menuitem"
                       tabIndex="-1"
                       id="user-menu-item-2"
@@ -189,7 +189,7 @@ const Navbar = () => {
                       Saved Properties
                     </Link>
                     <button
-                      className="block px-4 py-2 text-sm text-gray-700"
+                      className="block w-full text-left px-4 py-2 text-sm text-slate-300 hover:bg-slate-700 hover:text-slate-100"
                       role="menuitem"
                       tabIndex="-1"
                       id="user-menu-item-2"
@@ -204,15 +204,17 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* <!-- Mobile menu, show/hide based on menu state. --> */}
+      {/* Mobile menu */}
       {isMobileMenuOpen && (
         <div id="mobile-menu">
           <div className="space-y-1 px-2 pb-3 pt-2">
             <Link
               href="/"
               className={`${
-                pathname === "/" ? "bg-black" : ""
-              } text-white block rounded-md px-3 py-2 text-base font-medium`}
+                pathname === "/"
+                  ? "bg-emerald-500 text-white"
+                  : "text-slate-300 hover:bg-slate-800 hover:text-slate-100"
+              } block rounded-md px-3 py-2 text-base font-medium`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Home
@@ -220,8 +222,10 @@ const Navbar = () => {
             <Link
               href="/properties"
               className={`${
-                pathname === "/properties" ? "bg-black" : ""
-              } text-white block rounded-md px-3 py-2 text-base font-medium`}
+                pathname === "/properties"
+                  ? "bg-emerald-500 text-white"
+                  : "text-slate-300 hover:bg-slate-800 hover:text-slate-100"
+              } block rounded-md px-3 py-2 text-base font-medium`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Properties
@@ -229,14 +233,16 @@ const Navbar = () => {
             <Link
               href="/properties/add"
               className={`${
-                pathname === "/properties/add" ? "bg-black" : ""
-              } text-white block rounded-md px-3 py-2 text-base font-medium`}
+                pathname === "/properties/add"
+                  ? "bg-emerald-500 text-white"
+                  : "text-slate-300 hover:bg-slate-800 hover:text-slate-100"
+              } block rounded-md px-3 py-2 text-base font-medium`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Add Property
             </Link>
             {!isLogggedIn && (
-              <button className="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 my-5">
+              <button className="flex items-center text-slate-900 bg-emerald-400 hover:bg-emerald-500 rounded-md px-3 py-2 my-4 w-full justify-center text-base font-medium transition-colors duration-150">
                 <FaGoogle className="mr-2" />
                 <span>Login or Register</span>
               </button>

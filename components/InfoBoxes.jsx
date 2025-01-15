@@ -2,29 +2,41 @@ import InfoBox from "./InfoBox";
 
 const InfoBoxes = () => {
   return (
-    <section>
+    <section className="py-12 bg-slate-600">
       <div className="container-xl lg:container m-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 rounded-lg">
-          <InfoBox heading="For Renters">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
+          <InfoBox
+            heading="For Renters"
+            icon="user"
+            bgCol="bg-slate-800"
+            textCol="text-slate-100"
+            btnInfo={{
+              link: "/properties",
+              bgCol: "bg-emerald-500 hover:bg-emerald-600",
+              text: "Find Properties",
+            }}
+          >
             Find your dream rental property. Bookmark properties and contact
-            owners.
+            owners directly. Start your journey to the perfect home today.
           </InfoBox>
           <InfoBox
             heading="For Property Owners"
-            btnText="Browse Properties"
-            bgCol="bg-blue-100"
+            icon="building"
+            bgCol="bg-emerald-500"
+            textCol="text-slate-900"
             btnInfo={{
               link: "/properties",
-              bgCol: "bg-blue-500",
-              text: "Browse Properties",
+              bgCol: "bg-slate-900 hover:bg-slate-800",
+              text: "List Your Property",
             }}
           >
-            List your properties for rent. Manage your properties and view
-            analytics.
+            List your properties for rent. Manage your portfolio efficiently and
+            get detailed analytics on your listings' performance.
           </InfoBox>
         </div>
       </div>
     </section>
   );
 };
+
 export default InfoBoxes;
