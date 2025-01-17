@@ -9,7 +9,9 @@ import {
 } from "react-icons/fa";
 
 const PropertyCard = ({ property }) => {
-  const imageUrl = `/properties/${property.images[0]}`;
+  const imageUrl = property.images[0]?.startsWith("https://res.cloudinary.com")
+    ? property.images[0]
+    : `/properties/${property.images[0]}`;
 
   return (
     <div className="bg-slate-800 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-200 overflow-hidden group">

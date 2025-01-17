@@ -8,6 +8,9 @@ import {
 } from "react-icons/fa";
 
 const PropertyDetails = ({ property }) => {
+  const amenities = Array.isArray(property?.amenities)
+    ? property.amenities
+    : [];
   return (
     <main className="bg-slate-900 p-4 md:p-6 rounded-xl">
       <div className="bg-slate-800 p-8 rounded-xl shadow-lg text-center md:text-left">

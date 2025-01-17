@@ -49,11 +49,7 @@ const PropertySchema = new Schema(
       type: Number,
       required: [true, "Square feet is required"],
     },
-    ammenities: [
-      {
-        type: [String],
-      },
-    ],
+    amenities: [String],
     rates: {
       nightly: Number,
       weekly: Number,

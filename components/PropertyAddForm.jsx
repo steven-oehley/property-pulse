@@ -1,6 +1,11 @@
+import addProperty from "@/app/actions/addProperty";
+
 const PropertyAddForm = () => {
   return (
-    <form className="max-w-4xl mx-auto bg-slate-900 p-6 rounded-xl shadow-xl">
+    <form
+      action={addProperty}
+      className="max-w-4xl mx-auto bg-slate-900 p-6 rounded-xl shadow-xl"
+    >
       <h2 className="text-3xl text-center font-bold mb-8 text-white">
         Add Property
         <span className="block text-emerald-400 text-lg mt-2 font-normal">

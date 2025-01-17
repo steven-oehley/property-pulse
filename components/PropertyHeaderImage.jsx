@@ -1,14 +1,16 @@
 import Image from "next/image";
 
 const PropertyHeaderImage = ({ image }) => {
-  const imagePath = `/properties/${image}`;
+  const imageUrl = image?.startsWith("https://res.cloudinary.com")
+    ? image
+    : `/properties/${image}`;
 
   return (
     <section>
       <div className="container-xl m-auto">
         <div className="grid grid-cols-1">
           <Image
-            src={imagePath}
+            src={imageUrl}
             alt="Property Image"
             width={0}
             height={0}
