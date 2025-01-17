@@ -8,11 +8,12 @@ import profileDefault from "@/assets/images/profile.png";
 import logoWhite from "@/assets/images/logo-white.png";
 import { FaGoogle } from "react-icons/fa";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
-import { set } from "mongoose";
 
 const Navbar = () => {
   const { data: session } = useSession();
   const pathname = usePathname();
+
+  const profileImage = session?.user?.image || profileDefault;
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
@@ -86,7 +87,7 @@ const Navbar = () => {
                     pathname === "/"
                       ? "bg-emerald-500 text-white"
                       : "text-slate-300 hover:bg-slate-800 hover:text-slate-100"
-                  } rounded-md px-3 py-2 text-sm font-medium transition-colors duration-150`}
+                  } rounded-md px-3 py-2 text-md font-medium transition-colors duration-150`}
                 >
                   Home
                 </Link>
@@ -96,7 +97,7 @@ const Navbar = () => {
                     pathname === "/properties"
                       ? "bg-emerald-500 text-white"
                       : "text-slate-300 hover:bg-slate-800 hover:text-slate-100"
-                  } rounded-md px-3 py-2 text-sm font-medium transition-colors duration-150`}
+                  } rounded-md px-3 py-2 text-md font-medium transition-colors duration-150`}
                 >
                   Properties
                 </Link>
@@ -106,7 +107,7 @@ const Navbar = () => {
                     pathname === "/properties/add"
                       ? "bg-emerald-500 text-white"
                       : "text-slate-300 hover:bg-slate-800 hover:text-slate-100"
-                  } rounded-md px-3 py-2 text-sm font-medium transition-colors duration-150`}
+                  } rounded-md px-3 py-2 text-md font-medium transition-colors duration-150`}
                 >
                   Add Property
                 </Link>
@@ -177,9 +178,11 @@ const Navbar = () => {
                     <span className="absolute -inset-1.5"></span>
                     <span className="sr-only">Open user menu</span>
                     <Image
-                      className="h-8 w-8 rounded-full"
-                      src={profileDefault}
+                      className="h-10 w-10 rounded-full"
+                      src={profileImage}
                       alt="profile image"
+                      width={40}
+                      height={40}
                     />
                   </button>
                 </div>
@@ -217,6 +220,10 @@ const Navbar = () => {
                       role="menuitem"
                       tabIndex="-1"
                       id="user-menu-item-2"
+                      onClick={() => {
+                        setIsProfileMenuOpen(false);
+                        signOut();
+                      }}
                     >
                       Sign Out
                     </button>

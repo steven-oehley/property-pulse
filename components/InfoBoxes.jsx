@@ -2,13 +2,13 @@ import InfoBox from "./InfoBox";
 
 const InfoBoxes = () => {
   return (
-    <section className="py-12 bg-slate-600">
+    <section className="py-12 bg-slate-900">
       <div className="container-xl lg:container m-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
           <InfoBox
             heading="For Renters"
             icon="user"
-            bgCol="bg-slate-800"
+            bgCol="bg-slate-600/50"
             textCol="text-slate-100"
             btnInfo={{
               link: "/properties",
@@ -22,7 +22,7 @@ const InfoBoxes = () => {
           <InfoBox
             heading="For Property Owners"
             icon="building"
-            bgCol="bg-emerald-500"
+            bgCol="bg-emerald-500/90"
             textCol="text-slate-900"
             btnInfo={{
               link: "/properties",
